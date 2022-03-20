@@ -1,15 +1,12 @@
 198.23.6.23
 sample.roboshop.internal
 198.217.8.[10:20]
-
 [Dev]
 catalogue.dev.roboshop.internal
 cart.dev.roboshop.internal
-
 [PRD]
 catalogue.prod.roboshop.internal
 cart.prod.roboshop.internal
-
 [catalogue]
 catalogue.dev.roboshop.internal
 catalogue.prod.roboshop.internal
