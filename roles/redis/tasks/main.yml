@@ -27,3 +27,15 @@
     name: redis-6.2.7
     state: installed
 
+- name: Update IP address in config /etc/redis.conf file
+  ansible.builtin.replace:
+    path: /etc/redis.conf
+    regex: '127.0.0.1'
+    replace: '0.0.0.0'
+
+- name: Update IP address in /etc/redis/redis.conf config file
+  ansible.builtin.replace:
+    path: /etc/redis/redis.conf
+    regex: '127.0.0.1'
+    replace: '0.0.0.0'
+
