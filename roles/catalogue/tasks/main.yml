@@ -18,10 +18,10 @@
     name:  common
     tasks_from:  download
 
-- name:  Clean up old content
-  ansible.builtin.file:
-    path:  /home/roboshop/catalogue
-    state:  absent
+#- name:  Clean up old content
+#  ansible.builtin.file:
+#    path:  /home/roboshop/catalogue
+#    state:  absent
 
 - name:  Copy content
   become_user: roboshop
