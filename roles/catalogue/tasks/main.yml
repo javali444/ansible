@@ -45,6 +45,24 @@
     name: Roboshop
     comment:  Roboshop application user
 
+- name:  Download and Extract file
+  include_role:
+    name:  common
+    tasks_from:  download
+
+- name:  Clean up old content
+  ansible.builtin.file:
+    path:  /home/roboshop/catalogue
+    state:  absent
+
+- name:  Copy content
+  ansible.builtin.copy:
+    src:  /tmp/catalogue-main/
+    dest:  /home/roboshop/catalogue/
+    remote_src:  yes
+
+
+
 #- name: Switch to Roboshop user
 #  become: true
 #  become_user: Roboshop
