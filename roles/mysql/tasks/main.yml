@@ -78,11 +78,11 @@
 - name: Check the DB password by collecting the info
   community.mysql.mysql_info:
     login_user: root
-    login_password: Roboshop@1
+    login_password: RoboShop@1
   ignore_errors: yes
   register: mysql_status
 
-- name: Ressting password
+- name: Resetting password
   when: mysql_status.failed
   block:
     - name: Grep MySQL Default pasword
