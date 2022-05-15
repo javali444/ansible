@@ -1,13 +1,3 @@
-
-
-
-#    # mv localhost.conf /etc/nginx/default.d/roboshop.conf
-#
-#    ```
-#
-##    Finally restart the service once to effect the changes.
-
-
 - name: Install Nginx
   ansible.builtin.yum:
     name: nginx
@@ -30,9 +20,16 @@
     dest:  /usr/share/nginx/html/
     remote_src:  yes
 
+- name:  Copy Roboshop configuration file
+  ansible.builtin.copy:
+    src: roboshop.conf
+    dest:  /etc/nginx/default.d/roboshop.conf
+
+
 - name: Restart Nginx service
   ansible.builtin.systemd:
     state: restarted
     enabled:  yes
     daemon_reload: yes
     name: nginx
+
