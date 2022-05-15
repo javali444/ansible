@@ -1,3 +1,38 @@
-- name: Frontend component
-  ansible.builtin.debug:
-    msg:  Frontend component
+
+
+
+#    # mv localhost.conf /etc/nginx/default.d/roboshop.conf
+#
+#    ```
+#
+##    Finally restart the service once to effect the changes.
+
+
+- name: Install Nginx
+  ansible.builtin.yum:
+    name: nginx
+    state:  installed
+
+- name: Download and Extract frontend
+  ansible.builtin.unarchive:
+    src: https://github.com/roboshop-devops-project/frontend/archive/main.zip
+    dest: /tmp/frontend.zip
+    remote_src: yes
+
+- name: Cleanup old content
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: absent
+
+- name:  Copy frontend content to Nginx path
+  ansible.builtin.copy:
+    src:  /tmp/frontend-main/static/
+    dest:  /usr/share/nginx/html/
+    remote_src:  yes
+
+- name: Restart Nginx service
+  ansible.builtin.systemd:
+    state: restarted
+    enabled:  yes
+    daemon_reload: yes
+    name: nginx
