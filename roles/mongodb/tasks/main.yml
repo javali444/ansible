@@ -1,14 +1,4 @@
 
-#  1. Update Listen IP address from 127.0.0.1 to 0.0.0.0 in config file
-#
-#Config file: `/etc/mongod.conf`
-#
-#  then restart the service
-#
-#  ```bash
-#  # systemctl restart mongod
-#
-#  ```
 #
 #  ## Every Database needs the schema to be loaded for the application to work.
 #
@@ -37,6 +27,12 @@
   ansible.builtin.yum:
     name:  mongodb-org
     state:  installed
+
+- name: Update Listen IP address from 127.0.0.1 to 0.0.0.0 in config file
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: '0.0.0.0'
 
 - name:  Enable and Start Mongod service
   ansible.builtin.systemd:
