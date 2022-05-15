@@ -1,0 +1,4 @@
+- name:  Frontend component
+  hosts: FRONTEND
+  roles:
+    - frontend
