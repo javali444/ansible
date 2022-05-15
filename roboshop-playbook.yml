@@ -1,11 +1,6 @@
-- name:  Frontend component
-  hosts: FRONTEND
+- name:  Setup {{COMPONENT}} component
+  hosts: {{host}}
   become:  yes
   roles:
-    - frontend
+    - {{role_name}}
 
-- name:  Mongodb component
-  hosts: MONGODB
-  become:  yes
-  roles:
-    - mongodb
