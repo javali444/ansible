@@ -1,0 +1,35 @@
+#  **Note: Above command may fail with permission denied, So run as root user**
+#
+#    1. Update the roboshop user and group id in `payment.ini` file.
+#    2. Update SystemD service file
+#
+#    Update `CARTHOST` with cart server ip
+#
+#    Update `USERHOST` with user server ip
+#
+#    Update `AMQPHOST` with RabbitMQ server ip.
+#
+
+
+- name: Install Python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Setup application user, Donwload and Extract {{COMPONENT}} component
+  include_role:
+    name: common
+    tasks_from: download
+
+- name: Install Python dependencies
+  pip:
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: SystemD configuration Setup
+  include_role:
+    name: common
+    tasks_from: systemd
