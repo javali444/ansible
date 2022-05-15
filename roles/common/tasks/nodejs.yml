@@ -13,7 +13,7 @@
     name: roboshop
     comment:  Roboshop application user
 
-- name:  Download and Extract {{COMPONENT} content
+- name:  Download and Extract {{COMPONENT}} content
   include_role:
     name:  common
     tasks_from:  download
