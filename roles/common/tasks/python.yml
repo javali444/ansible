@@ -1,0 +1,39 @@
+#  **Note: Above command may fail with permission denied, So run as root user**
+#
+#    1. Update the roboshop user and group id in `payment.ini` file.
+
+
+- name: Install Python
+  ansible.builtin.yum:
+    name:
+      - python36
+      - gcc
+      - python3-devel
+    state: installed
+
+- name: Setup application user, Donwload and Extract {{COMPONENT}} component
+  include_role:
+    name: common
+    tasks_from: download
+
+- name: Install Python dependencies
+  pip:
+    requirements: /home/roboshop/{{COMPONENT}}/requirements.txt
+    executable: pip3
+
+- name: Update User ID in {{COMPONENT}}.ini file
+  ansible.builtin.lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^uid'
+    line: uid={{APP_USER.uid}}
+
+- name: Update Group ID in {{COMPONENT}}.ini file
+  ansible.builtin.lineinfile:
+    path: /home/roboshop/{{COMPONENT}}/{{COMPONENT}}.ini
+    regexp: '^gid'
+    line: gid={{APP_USER.group}}
+
+- name: SystemD configuration Setup
+  include_role:
+    name: common
+    tasks_from: systemd
