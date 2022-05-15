@@ -45,14 +45,14 @@
     name: Roboshop
     comment:  Roboshop application user
 
-- name: Switch to Roboshop user
-  become: true
-  become_user: Roboshop
+#- name: Switch to Roboshop user
+#  become: true
+#  become_user: Roboshop
 
 
-#- name:  Enable and Start Catalogue service
-#  ansible.builtin.systemd:
-#    name:  catalogue
-#    state:  restarted
-#    enabled:  yes
-#    daemon-reload:  yes
+- name:  Enable and Start Catalogue service
+  ansible.builtin.systemd:
+    name:  catalogue
+    state:  restarted
+    enabled:  yes
+    daemon-reload:  yes
