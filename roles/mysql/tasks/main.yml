@@ -86,7 +86,6 @@
   when: mysql_status.failed
   block:
     - name: Grep MySQL Default pasword
-      when: mysql_status.failed
       ansible.builtin.shell: grep 'temporary password' /var/log/mysqld.log | awk '{print $NF}'
       register: DEFAULT_ROOT_PASSWORD
 
