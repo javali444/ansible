@@ -1,5 +1,5 @@
 - name:  Setup {{COMPONENT}} component
-  hosts: {{host}}
+  hosts: "{{host}}"
   become:  yes
   roles:
     - {{role_name}}
