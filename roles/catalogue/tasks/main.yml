@@ -33,7 +33,6 @@
 - name:  Install NodeJs dependencies.
   community.general.npm:
     path:  /home/roboshop/catalogue
-  become_user: roboshop
 
 - name:  Replace MONGO_DNSNAME in the systemd configuration file
   ansible.builtin.replace:
