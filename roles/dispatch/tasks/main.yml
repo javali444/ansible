@@ -30,6 +30,8 @@
 
 - name: Configure go module
   ansible.builtin.shell: go mod init dispatch && go get && go build
+  args:
+    chdir: /home/roboshop/{{COMPONENT}}
 
 - name: SystemD configuration setup
   include_role:
