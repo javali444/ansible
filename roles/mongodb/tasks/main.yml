@@ -20,7 +20,7 @@
 - name:  Setup MongoDB repos
   ansible.builtin.copy:
     src:  mongodb.repo
-    dest:  /tmp
+    dest:  /etc/yum.repos.d/mongodb.repo
 
 
 - name:  Install MongoDB
@@ -40,3 +40,17 @@
     state:  restarted
     enabled:  yes
     daemon-reload:  yes
+
+- name:  Donwload and Extract schema
+  ansible.builtin.copy:
+    src:  https://github.com/roboshop-devops-project/mongodb/archive/main.zip
+    dest:  /tmp
+    remote_src:  yes
+
+- name:  Load Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+    loop:
+      - catalogue
+      - users
