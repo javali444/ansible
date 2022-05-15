@@ -36,13 +36,13 @@
 
 - name:  Replace MONGO_DNSNAME in the systemd configuration file
   ansible.builtin.replace:
-    path:  systemd.service
+    path:  /home/roboshop/catalogue/systemd.service
     regexp:  'MONGO_DNSNAME'
     replace:  'mongodb.roboshop.internal'
 
 - name:  Copy SystemD file
   ansible.builtin.copy:
-    src:  systemd.service
+    src:  /home/roboshop/catalogue/systemd.service
     dest:  /etc/systemd/system/catalogue.service
 
 - name:  Enable and Start Catalogue service
