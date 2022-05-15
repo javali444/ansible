@@ -1,1 +1,3 @@
-- name:
+- name: Frontend component
+  ansible.builtin.debug:
+    msg:  Frontend component
