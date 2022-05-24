@@ -42,7 +42,7 @@ pipeline {
 
 
         //}
-        echo Main
+      sh '''echo Main'''
       }
     }
 
