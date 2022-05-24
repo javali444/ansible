@@ -38,9 +38,10 @@ pipeline {
 //             git tag $TAG
 //             git push --tags
 //           '''
-        echo Main
 
-        }
+
+        //}
+        echo Main
       }
     }
 
