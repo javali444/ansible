@@ -30,7 +30,7 @@ pipeline {
 
     stage('TAG') {
       when {
-      expression { env.TAG_NAME != null }
+      expression { TAG_NAME != null }
       }
       steps {
 //         dir('CODE') {
