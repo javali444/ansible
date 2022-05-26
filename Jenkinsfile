@@ -45,7 +45,6 @@ pipeline {
       sh '''echo Main'''
       }
     }
-
   }
 
 }
