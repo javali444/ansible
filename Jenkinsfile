@@ -36,9 +36,9 @@ pipeline {
 //         dir('CODE') {
 //           git branch: 'main', url: "https://${GIT_USR}:${GIT_PSW}@https://github.com/javali444/ansible"
           sh '''
-           # TAG=$(bash auto_tags.sh)
-            #git tag $TAG
-            #git push --tags
+           TAG=$(bash auto_tags.sh)
+            git tag $TAG
+            git push --tags
              env
           '''
 //         }
