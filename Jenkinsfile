@@ -39,7 +39,7 @@ pipeline {
            TAG=$(bash auto_tags.sh)
             git tag $TAG
             git push --tags
-             env
+             #env
           '''
 //         }
       }
