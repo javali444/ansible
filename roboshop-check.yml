@@ -55,3 +55,7 @@
             state: 'absent'
             instance_ids: '{{ INSTANCE_ID }}'
             region: us-east-1
+          register: output
+          ansible.builtin.debug:
+          msg:
+            {{output}
