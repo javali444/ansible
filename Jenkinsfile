@@ -29,7 +29,9 @@ pipeline {
     }
 
     stage('TAG') {
-      when { TAG_NAME != null}
+      when {
+      expression { env.TAG_NAME != null }
+      }
       steps {
 //         dir('CODE') {
 //           git branch: 'main', url: "https://${GIT_USR}:${GIT_PSW}@https://github.com/javali444/ansible"
